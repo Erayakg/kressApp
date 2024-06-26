@@ -572,14 +572,13 @@
       }
     });
 
-    function loadTopAnnouncements() {
+    function loadTopAnnouncementsOrjinal() {
       $.ajax({
         url: '/v1/announcements/top3', // URL güncellendi
         type: 'GET',
         success: function (data) {
           let announcementsContainer = $('.row.pb-3');
           announcementsContainer.empty(); // Clear any existing content
-
           data.forEach(announcement => {
             let announcementItem = `
           <div class="col-lg-4 mb-4">
@@ -600,6 +599,45 @@
         }
       });
     }
+
+    function loadTopAnnouncements() {
+  // Statik duyuru bilgilerini tanımlayın
+  let announcements = [
+    {
+      title: "YAZ OKULUMUZ BAŞLIYOR!",
+      imgUrl: "img/duyuru1.jpg",
+      description: "Çocuklarımız için Harika bir yaz okulu deneyimi! Dolu dolu bir yaz okulu programı hazırladık. Çocuklarımız eğlenirken öğrenecek. Çocuklarımızı yaratıcı düşünmeye teşvik ederek, yeni arkadaşlıklar edinmelerini sağlayarak, eşsiz deneyimlerin olduğu, verimli bir yaz okulu programı ile 24 Haziran itibariyle okulumuzdayız. Çocuklarımız keyifli anlar biriktireceği için bizler de çok heyecanlıyız!"
+    }
+  ];
+
+  let announcementsContainer = $('.row.pb-3');
+  announcementsContainer.empty(); // Clear any existing content
+
+  // Her duyuru için öğe oluştur
+  announcements.forEach(announcement => {
+    let announcementItem = `
+      <div class="col-lg-4 mb-4">
+        <div class="card border-0 shadow-sm mb-2">
+          <img class="card-img-top" src="${announcement.imgUrl}" alt="Announcement Image">
+          <div class="card-body bg-light text-center p-4">
+            <h4 class="">${announcement.title}</h4>
+            <p>${announcement.description}</p>
+            <a href="contact.html" class="btn btn-primary px-4 mx-auto my-2">Read More</a>
+          </div>
+        </div>
+      </div>`;
+    announcementsContainer.append(announcementItem);
+  });
+}
+
+// Örnek bir benzersiz id oluşturucu fonksiyon
+function generateUniqueId() {
+  return Math.random().toString(36).substr(2, 9);
+}
+
+// Duyuruları yükleme fonksiyonunu çağır
+//loadTopAnnouncements();
+
 
 
   </script>
