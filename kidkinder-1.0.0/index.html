@@ -572,7 +572,7 @@
       }
     });
 
-    function loadTopAnnouncementsOrjinal() {
+    function loadTopAnnouncements() {
       $.ajax({
         url: '/v1/announcements/top3', // URL güncellendi
         type: 'GET',
@@ -600,7 +600,7 @@
       });
     }
 
-    function loadTopAnnouncements() {
+   /* function loadTopAnnouncements() {
   // Statik duyuru bilgilerini tanımlayın
   let announcements = [
     {
@@ -628,7 +628,7 @@
       </div>`;
     announcementsContainer.append(announcementItem);
   });
-}
+}*/
 
 // Örnek bir benzersiz id oluşturucu fonksiyon
 function generateUniqueId() {
@@ -636,7 +636,7 @@ function generateUniqueId() {
 }
 
 // Duyuruları yükleme fonksiyonunu çağır
-//loadTopAnnouncements();
+loadTopAnnouncements();
 
 
 
