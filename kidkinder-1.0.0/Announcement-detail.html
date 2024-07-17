@@ -4,12 +4,10 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Iğdır İlk Adım Kreş ve Gündüz Bakım Evi Duyuru Detayı</title>
-
     
     <!-- Meta Tags -->
     <meta content="Free HTML Templates" name="keywords" />
     <meta content="Free HTML Templates" name="description" />
-
     <meta name="description" content="Iğdır İlk Adım Kreş ve Gündüz Bakım Evi Duyuru Detayı">
     <meta name="keywords" content="İlk Adım Kreş ve Gündüz Bakım Evi , ilkadım , Bakım Evi , Iğdır Bakım Evi , Iğdır Bakımevi , Iğdır Eğitim , Iğdır Kreş , Iğdır Özel Bakım Evi , Iğdır Özel İlk Adım Kreş , Iğdır Özel İlkadım Kreş , Iğdır İlkadım Kreş , ilkadım kreş , Özel Iğdır İlk Adım Kreş , Özel İlk Adım Kreş , Özel İlkadım Kreş , İlk Adım Bakım Evi , İlk Adım Kreş , İlkadım Bakım Evi , İlkadım Kreş , ığdır kreş , Iğdır Anaokul , Iğdır Özel Anaokul , Iğdır İlkadım Anaokulu , Özel Iğdır Bakımevi , İlkadım Anaokulu , kreş , Anaokul , Kreş , Eğitim">
     <meta name="author" content="Iğdır İlk Adım Kreş">
@@ -79,7 +77,7 @@
 
                             let detailContent = `
                                 <div class="card mb-3">
-                                    <img class="card-img-top" src="data:image/jpeg;base64,${data.imageBase64}" alt="Announcement Image">
+                                    <img id="announcement-image" class="card-img-top" src="data:image/jpeg;base64,${data.imageBase64}" alt="Announcement Image">
                                     <div class="card-body">
                                         <h2 class="card-title">${data.title}</h2>
                                         <p class="card-text">${data.description}</p>
@@ -87,6 +85,19 @@
                                     </div>
                                 </div>`;
                             detailContainer.html(detailContent);
+
+                            // Adjust image size based on its natural size
+                            let announcementImage = document.getElementById('announcement-image');
+                            announcementImage.onload = function() {
+                                let naturalWidth = announcementImage.naturalWidth;
+                                let naturalHeight = announcementImage.naturalHeight;
+
+                                // Apply styles based on image size
+                                if (naturalWidth < 150) {
+                                    announcementImage.style.width = 'auto';
+                                    announcementImage.style.maxHeight = '300px';
+                                }
+                            };
                         },
                         error: function(error) {
                             // Display error message if announcement details could not be loaded
